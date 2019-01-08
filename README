@@ -1,0 +1,13 @@
+This is the Terraform configuration and module store for Load Balancers.
+
+To add a new partner, go to loadbalancer directory (i.e., "prod1")
+and add it into variables.tf.
+
+To change main load balancer settings, go to LoadBalancers directory.
+
+Please be careful and test everything on non-prod first. To do this,
+run
+terraform workspace select non-production
+
+To switch to production, run
+terraform workspace select production

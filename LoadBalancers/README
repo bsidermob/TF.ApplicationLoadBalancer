@@ -1,0 +1,20 @@
+This creates/modifies a load balancer and DNS entries for services:
+
+Usage:
+
+First, for non-prod:
+~/terraform init
+~/terraform workspace select non-production
+~/terraform apply -target=module.loadbalancer
+~/terraform state rm module.dns
+~/terraform apply -target=module.dns
+
+# Then for production environment:
+~/terraform workspace select production
+~/terraform state rm module.dns
+~/terraform apply -target=module.dns
+
+* This will overwrite existing records - this is fine. Nothing to *
+* worry about. It'll take a bit of time though. This is happening *
+* because resource IDs are regenerated each time so we delete the *
+* whole state file to avoid that 								  *
